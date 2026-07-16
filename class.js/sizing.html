@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Table Page</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 60%;
+      margin: 50px auto;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    td {
+      border: 1px solid #ccc;
+      padding: 15px;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .description {
+      font-size: 16px;
+      color: #555;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td class="title">My Awesome Title</td>
+    </tr>
+    <tr>
+      <td>
+        <img src="https://via.placeholder.com/400x200" alt="Sample Image">
+      </td>
+    </tr>
+    <tr>
+      <td class="description">This is the first line of description.</td>
+    </tr>
+    <tr>
+      <td class="description">Here is the second line of description.</td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Footer Example</title>
+  <style>
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 15px 0;
+      font-family: Arial, sans-serif;
+    }
+    table {
+      width: 80%;
+      margin: 0 auto;
+    }
+    td {
+      text-align: center;
+      padding: 5px;
+    }
+    a {
+      color: #ffcc00;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Page content here -->
+
+  <footer>
+    <table>
+      <tr>
+        <td>&copy; 2026 My Website. All rights reserved.</td>
+        <td>
+          <a href="#">Privacy Policy</a> | 
+          <a href="#">Terms & Conditions</a>
+        </td>
+      </tr>
+    </table>
+  </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Table Layout Example</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+    }
+    td {
+      border: 1px solid #ccc;
+      padding: 15px;
+    }
+    .header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .menu {
+      width: 20%;
+      background-color: #f4f4f4;
+      vertical-align: top;
+    }
+    .content {
+      width: 80%;
+      background-color: #fff;
+      vertical-align: top;
+    }
+    .footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+    }
+    a {
+      color: #333;
+      text-decoration: none;
+      display: block;
+      margin: 8px 0;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <!-- Header -->
+    <tr>
+      <td colspan="2" class="header">My Website Header</td>
+    </tr>
+
+    <!-- Left Menu and Main Content -->
+    <tr>
+      <td class="menu">
+        <h3>Menu</h3>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </td>
+      <td class="content">
+        <h2>Main Content Area</h2>
+        <p>This is where your main content goes. You can add text, images, or anything else here.</p>
+      </td>
+    </tr>
+
+    <!-- Footer -->
+    <tr>
+      <td colspan="2" class="footer">
+        &copy; 2026 My Website | <a href="#" style="color:#ffcc00;">Privacy Policy</a> | <a href="#" style="color:#ffcc00;">Terms & Conditions</a>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Three Buttons in a Row</title>
+  <style>
+    table {
+      margin: 50px auto;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 20px;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+    }
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td><button>Button 1</button></td>
+      <td><button>Button 2</button></td>
+      <td><button>Button 3</button></td>
+    </tr>
+  </table>
+</body>
+</html>q
+
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="welcome()">welcome</button>
+  <div id="box"></div>
+
+  <script>
+    function welcome() {
+      let p = document.createElement("p");
+      p.innerText = "Hello, you have been added!";
+      document.getElementById("box").appendChild(p);
+    }
+  </script>
+</body>
+</html>

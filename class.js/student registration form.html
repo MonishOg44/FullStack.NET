@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>student Registration Form</title>
+
+  <style>
+
+  </style>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form action="#" method="post">
+    
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <br><br>
+    
+    <label>Gender:</label>
+    <input type="radio" id="male" name="gender" value="Male" required>
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="Female">
+    <label for="female">Female</label>
+
+
+    <br><br>
+
+    <button type="submit">Submit</button>
+    
+    <div id="result"></div>
+
+    <script>
+      
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const formData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      gender: document.querySelector('input[name="gender"]:checked')?.value,
+      hobbies: Array.from(document.querySelectorAll('input[name="hobbies"]')).map(value => value.value),
+      dob: document.getElementById("dob").value
+    };
+    app.get('/favicon.ico', function(req, res) {
+  res.sendStatus(204);
+});
+
+
+    // localStorage
+    localStorage.setItem("formData", JSON.stringify(formData));
+    document.getElementById("result").textContent = `Hello ${formData.name}, data has been saved`;
+    console.log("Saved data:", formData);
+  });
+
+    </script>
+    
+  </form>
+</body>
+</html>

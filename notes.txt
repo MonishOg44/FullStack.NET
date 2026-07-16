@@ -1,0 +1,255 @@
+day1
+
+front end
+html
+css cascading style sheets
+
+back end 
+dotnet c#
+python
+
+database 
+A database in coding is an organized, electronic collection of data that allows for efficient storage, retrieval, and management of information 
+this three refers to fullstack 
+
+what is coding 
+Coding, or programming, is the process of writing instructions (code) for computers to understand and execute, using specialized languages like Python or JavaScript to create software, websites, apps, and automate tasks, essentially acting as a translator between human ideas and machine actions to build nearly all modern technology. It's like writing a recipe, but for a computer, telling it exactly what to do, step-by-step, to achieve a desired outcome, from displaying an image to running complex systems. 
+
+sdlclf
+syntax
+database
+loops
+conditions Boolean statement for controlling coding flow
+language
+functions
+
+SQL (Structured Query Language) is a standard programming language used to define, manage, and manipulate data stored in a relational database management system (RDBMS). It is the universal language for interacting with databases that organize data into tables consisting of rows and columns. 
+
+variable room and balls inside
+a variable is a named storage location in a computer's memory that holds a value or data, which can be changed or "varied" during the execution of a program. 
+
+day 3 
+
+-- version npm
+
+-- version node
+
+
+html lifecycle
+
+html h1 h3 
+request 
+validation
+rendering{procees to view the context}
+
+js library {window in code}
+parsing 
+
+
+day4 <div id=div1>
+
+width 
+height
+border
+
+span used for colouring a separate word
+
+#span{
+
+}
+
+hyper text 
+what html recognizes is hyper text
+case sensitive 
+anchor tag 
+dzone
+
+day 5 
+
+semantic tags
+
+body consists of header and footer
+
+section can have article and its vice versa
+
+on page request and response : react
+
+font size and font family
+
+node js security bypass
+
+shift right click for vs code open
+
+reusability in object oriented programing
+
+display = property flex = value
+
+
+day 6 
+
+
+code. to run documents on vs code
+
+<br> is an empty tag <hr> is also an empty tag <input>
+
+strong is used for screen reader and used by seo 
+
+
+day 7 
+
+
+interactive tags
+
+label mapping
+
+student name(label) -> textbox
+
+age(label)-> textbox
+
+gender(label)->textbox
+
+course(label)-> select and option 
+
+input(register)
+
+
+waterfall method last min change not accepted (dev friendly)
+
+agile (client friendly)
+
+
+
+algorithm 
+
+set of instruction to be followed to implement a program 
+
+step 1 start a program
+
+step 2 let the starting value be 1
+
+step3 let the maximum number from the user
+
+step4 generate a for loop ending with the maximum value given by the user
+
+step5 display on the screen
+
+step6 end
+
+flowchart 
+
+program
+testing
+publish
+live testing
+
+5ws 1h
+
+dom mapping 
+label plus input
+
+dom grouping 
+
+dom illusion 
+
+elements 
+sources f12key
+
+day 8 
+
+request is address bar 
+
+request-> server-> database
+
+real world analogy 
+
+css
+
+selector {
+    property : value;
+
+}
+
+day9 
+
+react prompt 
+
+npm run dev
+
+compile time error - when server does not accept the command and shows error that is it will show the error within the code editor 
+
+run time error - error occurred in the browser 
+
+nested div 
+
+day 10 
+
+vh view port = the whole width of the screen 1px=16vh
+target attribute blanlk value
+vw
+
+types of selector 
+class id element 
+
+i frame 
+
+embedding extrenal source within our page and also used to show external webpages 
+
+tabindex 0 is  normal html form
+
+day 11
+
+class for resuablity and groupping
+
+text decoration 
+
+boxmodel
+
+content
+padding
+border
+margin
+
+day 12
+
+first 2 for red second blue third for green
+
+rgbalhpha maximum value is 1 
+
+hue value  0   120   240
+
+           red green blue
+
+day 13
+
+alt+0169 for copyright symbol 
+
+1em is to change font size according to devices 1em is 16px and based on parent element
+
+vh- 800px=1vh
+
+day 14
+
+pseudo elements is before and after
+
+lvha order for pseudo class
+
+@media is like conditions if else etc
+
+
+day15
+
+complier refers to changing the input into computer understanding
+jit comp
+runtime comp
+
+nan not a number 
+
+day16 
+
+array collection of singular data types
+
+delimiter to separate the statements
+
+day 17 
+
+parameter ; meeting the nessecary activity

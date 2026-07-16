@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee List</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    input, select, button { margin: 5px; padding: 5px; }
+    li { margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+  <h2>Employee Entry Form</h2>
+  <input id="name" placeholder="Name">
+  <input id="age" type="number" placeholder="Age">
+  <select id="designation">
+    <option>Developer</option>
+    <option>Manager</option>
+    <option>Designer</option>
+    <option>Tester</option>
+  </select>
+  <button onclick="addEmployee()">Submit</button>
+
+  <h3>Employee List:</h3>
+  <ul id="employeeList"></ul>
+
+  <script>
+    function addEmployee() {
+      let name = document.getElementById("name").value;
+      let age = document.getElementById("age").value;
+      let designation = document.getElementById("designation").value;
+
+      if(name && age) {
+        let li = document.createElement("li");
+        li.textContent = `Name: ${name}, Age: ${age}, Designation: ${designation}`;
+        document.getElementById("employeeList").appendChild(li);
+
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("designation").value = "";
+        alert("Fill all fields!");
+      }
+    }
+  </script>
+
+</body>
+</html>

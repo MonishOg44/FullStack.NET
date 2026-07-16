@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern AI Developer Portfolio</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A premium modern developer portfolio showcasing cutting-edge web design and robust engineering skills.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Abstract Background Orbs -->
+    <div class="bg-shape shape-1" id="shape1"></div>
+    <div class="bg-shape shape-2" id="shape2"></div>
+    <div class="bg-shape shape-3" id="shape3"></div>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="logo">Dev<span class="gradient-text">Folio</span></div>
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="mobile-menu-btn" id="mobile-btn"><i class="fas fa-bars"></i></button>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero fade-in-section">
+            <div class="hero-content">
+                <div class="badge">Available for Work</div>
+                <h1 class="title">Crafting digital<br>experiences with <span class="gradient-text">Precision</span></h1>
+                <h2 class="subtitle">I'm a <span id="typewriter"></span><span class="cursor">|</span></h2>
+                <p class="description">
+                    Combining striking aesthetics with robust software engineering to build websites and web apps that leave a lasting impression.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section fade-in-section">
+            <div class="section-header">
+                <h2>My <span class="gradient-text">Arsenal</span></h2>
+                <p>Modern technologies to build state-of-the-art products</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="icon-wrapper"><i class="fab fa-html5" style="color: #E34F26;"></i></div>
+                    <h3>HTML5</h3>
+                    <p>Semantic & Accessible Structure</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon-wrapper"><i class="fab fa-css3-alt" style="color: #1572B6;"></i></div>
+                    <h3>CSS3 & Vanilla</h3>
+                    <p>Modern layouts & Glassmorphism</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon-wrapper"><i class="fab fa-js" style="color: #F7DF1E;"></i></div>
+                    <h3>JavaScript</h3>
+                    <p>Dynamic Interactive Logic</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon-wrapper"><i class="fab fa-react" style="color: #61DAFB;"></i></div>
+                    <h3>React.js</h3>
+                    <p>Complex Single Page Apps</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon-wrapper"><i class="fab fa-node-js" style="color: #339933;"></i></div>
+                    <h3>Node.js</h3>
+                    <p>Scalable Backend Services</p>
+                </div>
+                <div class="skill-card">
+                    <div class="icon-wrapper"><i class="fas fa-database" style="color: #336791;"></i></div>
+                    <h3>Databases</h3>
+                    <p>SQL, NoSQL, & Graph DBs</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section fade-in-section">
+            <div class="section-header">
+                <h2>Featured <span class="gradient-text">Work</span></h2>
+                <p>A selection of recent development projects</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card group">
+                    <div class="project-img placeholder-gradient-1">
+                        <div class="project-overlay">
+                            <a href="#" class="view-btn"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Tailwind</span>
+                        </div>
+                        <h3>AI SaaS Platform</h3>
+                        <p>A high-performance application allowing users to generate and manage AI assets with real-time editing.</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card group">
+                    <div class="project-img placeholder-gradient-2">
+                        <div class="project-overlay">
+                            <a href="#" class="view-btn"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Vanilla JS</span>
+                            <span class="tag">GSAP</span>
+                            <span class="tag">Three.js</span>
+                        </div>
+                        <h3>Creative Agency Portfolio</h3>
+                        <p>An immersive 3D web experience with stunning scroll-linked animations and WebGL rendering.</p>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card group">
+                    <div class="project-img placeholder-gradient-3">
+                        <div class="project-overlay">
+                            <a href="#" class="view-btn"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">Redis</span>
+                        </div>
+                        <h3>E-Commerce Backend API</h3>
+                        <p>A robust, scalable backend architecture for a high-traffic e-commerce store with caching mechanisms.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section fade-in-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2><span class="gradient-text">Let's Talk</span></h2>
+                    <p>Have a project in mind or just want to say hi? Feel free to send a message!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="far fa-envelope"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" placeholder="How can I help you?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">Dev<span class="gradient-text">Folio</span></div>
+            <p>&copy; <span id="year"></span> All rights reserved. Designed & Built with ❤️</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

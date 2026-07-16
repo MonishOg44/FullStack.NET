@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        input[type="text"]:invalid,
+        input[type="email"]:invalid,
+        input[type="password"]:invalid,
+        input[type="number"]:invalid {
+            border-color: #ff6b6b;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-item,
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .radio-item label,
+        .checkbox-item label {
+            margin-bottom: 0;
+            font-weight: 500;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registration Form</h1>
+        <div class="success-message" id="successMessage">
+            ✓ Registration submitted successfully!
+        </div>
+
+        <form id="registrationForm" novalidate>
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input 
+                    type="text" 
+                    id="fullName" 
+                    name="fullName" 
+                    placeholder="Enter your full name"
+                    required
+                >
+                <div class="error-message" id="nameError"></div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="example@email.com"
+                    required
+                >
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password *</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="At least 8 characters"
+                    required
+                    minlength="8"
+                >
+                <div class="error-message" id="passwordError"></div>
+            </div>
+
+            <!-- Age Field -->
+            <div class="form-group">
+                <label for="age">Age *</label>
+                <input 
+                    type="number" 
+                    id="age" 
+                    name="age" 
+                    placeholder="Enter your age"
+                    min="13"
+                    max="120"
+                    required
+                >
+                <div class="error-message" id="ageError"></div>
+            </div>
+
+            <!-- Gender Field (Radio Buttons) -->
+            <div class="form-group">
+                <label>Gender *</label>
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input 
+                            type="radio" 
+                            id="male" 
+                            name="gender" 
+                            value="male"
+                            required
+                        >
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="radio-item">
+                        <input 
+                            type="radio" 
+                            id="female" 
+                            name="gender" 
+                            value="female"
+                        >
+                        <label for="female">Female</label>
+                    </div>
+                    <div class="radio-item">
+                        <input 
+                            type="radio" 
+                            id="other" 
+                            name="gender" 
+                            value="other"
+                        >
+                        <label for="other">Other</label>
+                    </div>
+                </div>
+                <div class="error-message" id="genderError"></div>
+            </div>
+
+            <!-- Hobbies Field (Checkboxes) -->
+            <div class="form-group">
+                <label>Hobbies (Select at least one) *</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input 
+                            type="checkbox" 
+                            id="reading" 
+                            name="hobbies" 
+                            value="reading"
+                        >
+                        <label for="reading">Reading</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input 
+                            type="checkbox" 
+                            id="sports" 
+                            name="hobbies" 
+                            value="sports"
+                        >
+                        <label for="sports">Sports</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input 
+                            type="checkbox" 
+                            id="music" 
+                            name="hobbies" 
+                            value="music"
+                        >
+                        <label for="music">Music</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input 
+                            type="checkbox" 
+                            id="travel" 
+                            name="hobbies" 
+                            value="travel"
+                        >
+                        <label for="travel">Travel</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input 
+                            type="checkbox" 
+                            id="gaming" 
+                            name="hobbies" 
+                            value="gaming"
+                        >
+                        <label for="gaming">Gaming</label>
+                    </div>
+                </div>
+                <div class="error-message" id="hobbiesError"></div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const successMessage = document.getElementById('successMessage');
+
+        // Validation functions
+        function validateName(name) {
+            if (!name.trim()) {
+                return 'Full name is required';
+            }
+            if (name.trim().length < 3) {
+                return 'Name must be at least 3 characters';
+            }
+            if (!/^[a-zA-Z\s]+$/.test(name)) {
+                return 'Name can only contain letters and spaces';
+            }
+            return '';
+        }
+
+        function validateEmail(email) {
+            if (!email.trim()) {
+                return 'Email is required';
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                return 'Please enter a valid email address';
+            }
+            return '';
+        }
+
+        function validatePassword(password) {
+            if (!password) {
+                return 'Password is required';
+            }
+            if (password.length < 8) {
+                return 'Password must be at least 8 characters';
+            }
+            if (!/[A-Z]/.test(password)) {
+                return 'Password must contain at least one uppercase letter';
+            }
+            if (!/[a-z]/.test(password)) {
+                return 'Password must contain at least one lowercase letter';
+            }
+            if (!/[0-9]/.test(password)) {
+                return 'Password must contain at least one number';
+            }
+            return '';
+        }
+
+        function validateAge(age) {
+            if (!age) {
+                return 'Age is required';
+            }
+            if (age < 13) {
+                return 'You must be at least 13 years old';
+            }
+            if (age > 120) {
+                return 'Please enter a valid age';
+            }
+            return '';
+        }
+
+        function validateGender() {
+            const genderRadios = document.querySelectorAll('input[name="gender"]');
+            const isSelected = Array.from(genderRadios).some(radio => radio.checked);
+            return isSelected ? '' : 'Please select a gender';
+        }
+
+        function validateHobbies() {
+            const hobbiesCheckboxes = document.querySelectorAll('input[name="hobbies"]');
+            const isSelected = Array.from(hobbiesCheckboxes).some(checkbox => checkbox.checked);
+            return isSelected ? '' : 'Please select at least one hobby';
+        }
+
+        // Display error messages
+        function displayError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            if (message) {
+                errorElement.textContent = message;
+                errorElement.classList.add('show');
+            } else {
+                errorElement.classList.remove('show');
+            }
+        }
+
+        // Real-time validation
+        document.getElementById('fullName').addEventListener('blur', function() {
+            const error = validateName(this.value);
+            displayError('nameError', error);
+        });
+
+        document.getElementById('email').addEventListener('blur', function() {
+            const error = validateEmail(this.value);
+            displayError('emailError', error);
+        });
+
+        document.getElementById('password').addEventListener('blur', function() {
+            const error = validatePassword(this.value);
+            displayError('passwordError', error);
+        });
+
+        document.getElementById('age').addEventListener('blur', function() {
+            const error = validateAge(this.value);
+            displayError('ageError', error);
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Clear all previous error messages
+            document.querySelectorAll('.error-message').forEach(msg => {
+                msg.classList.remove('show');
+            });
+
+            // Validate all fields
+            const nameError = validateName(document.getElementById('fullName').value);
+            const emailError = validateEmail(document.getElementById('email').value);
+            const passwordError = validatePassword(document.getElementById('password').value);
+            const ageError = validateAge(document.getElementById('age').value);
+            const genderError = validateGender();
+            const hobbiesError = validateHobbies();
+
+            displayError('nameError', nameError);
+            displayError('emailError', emailError);
+            displayError('passwordError', passwordError);
+            displayError('ageError', ageError);
+            displayError('genderError', genderError);
+            displayError('hobbiesError', hobbiesError);
+
+            // Check if all validations passed
+            if (!nameError && !emailError && !passwordError && !ageError && !genderError && !hobbiesError) {
+                // Collect form data
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value,
+                    password: '***',
+                    age: document.getElementById('age').value,
+                    gender: document.querySelector('input[name="gender"]:checked').value,
+                    hobbies: Array.from(document.querySelectorAll('input[name="hobbies"]:checked')).map(cb => cb.value)
+                };
+
+                console.log('Form Data:', formData);
+
+                // Show success message
+                successMessage.classList.add('show');
+
+                // Reset form
+                form.reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>

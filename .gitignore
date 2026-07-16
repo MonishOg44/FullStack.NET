@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Archive files
+*.tar.gz
+*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build/Dist directories
+dist/
+build/
+.next/
+out/
+bin/
+obj/

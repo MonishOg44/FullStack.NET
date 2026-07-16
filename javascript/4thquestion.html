@@ -1,0 +1,44 @@
+<div class="content">
+    <h2>Mini Form</h2>
+    <form>
+      <label>Text: <input type="text" name="username"></label>
+      <label>Password: <input type="password" name="password"></label>
+      <label>Email: <input type="email" name="email"></label>
+      <label><input type="checkbox" name="subscribe"> Subscribe to newsletter</label>
+      <label><input type="radio" name="gender" value="male"> Male</label>
+      <label><input type="radio" name="gender" value="female"> Female</label>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <form action="#" method="post">
+    
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" 
+           pattern="[0-9]{10}" 
+           placeholder="Enter 10-digit number" 
+           required>
+    <br><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br><br>
+    
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="5" cols="40" required></textarea>
+    <br><br>
+    
+    <label for="feedbackType">Feedback Type:</label>
+    <select id="feedbackType" name="feedbackType" required>
+      <option value="">--Select--</option>
+      <option value="complaint">Complaint</option>
+      <option value="suggestion">Suggestion</option>
+      <option value="praise">Praise</option>
+      <option value="other">Other</option>
+    </select>
+    <br><br>
+    
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

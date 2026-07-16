@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            background-color: #fff;
+            color: #202124;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: #fff;
+            border-bottom: 1px solid #dadce0;
+        }
+
+        .header-logo {
+            font-size: 14px;
+            color: #4285f4;
+            font-weight: 500;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: #4285f4;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .header-nav a:hover {
+            color: #1a73e8;
+        }
+
+        .header-nav.active {
+            color: #1a73e8;
+            border-bottom: 3px solid #1a73e8;
+            padding-bottom: 12px;
+        }
+
+        /* Main Container for Homepage */
+        .main-home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .google-logo {
+            font-size: 92px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        .logo-g { color: #4285f4; }
+        .logo-o { color: #ea4335; }
+        .logo-o2 { color: #fbbc04; }
+        .logo-g2 { color: #4285f4; }
+        .logo-l { color: #34a853; }
+        .logo-e { color: #ea4335; }
+
+        .search-container {
+            width: 100%;
+            max-width: 584px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .search-box {
+            position: relative;
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 6px rgba(32,33,36,.08);
+            transition: box-shadow 0.3s;
+        }
+
+        .search-box:hover {
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        }
+
+        .search-box:focus-within {
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+        }
+
+        .search-icon {
+            color: #9aa0a6;
+            margin-right: 12px;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 16px;
+            font-family: inherit;
+            background: transparent;
+        }
+
+        .search-input::placeholder {
+            color: #9aa0a6;
+        }
+
+        .clear-search {
+            cursor: pointer;
+            color: #9aa0a6;
+            display: none;
+            margin-left: 12px;
+        }
+
+        .search-input:not(:placeholder-shown) ~ .clear-search {
+            display: block;
+        }
+
+        .suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #dfe1e5;
+            border-top: none;
+            border-radius: 0 0 24px 24px;
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+            display: none;
+            z-index: 10;
+            margin-top: 0;
+        }
+
+        .suggestions.active {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #4285f4;
+            transition: background-color 0.2s;
+        }
+
+        .suggestion-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .suggestion-item i {
+            color: #9aa0a6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #f8f9fa;
+            color: #3c4043;
+            border: 1px solid #f8f9fa;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            box-shadow: 0 1px 1px rgba(0,0,0,.1);
+            background-color: #f8f9fa;
+            color: #202124;
+            border: 1px solid #dadce0;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #f2f2f2;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #dadce0;
+            font-size: 14px;
+        }
+
+        .footer-left, .footer-right {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer a {
+            color: #70757a;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #202124;
+        }
+
+        /* Search Results Page */
+        .results-container {
+            display: none;
+            padding: 0;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .results-header {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-height: 70px;
+        }
+
+        .results-logo {
+            font-size: 22px;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .results-search-box {
+            flex: 1;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .results-tab-bar {
+            display: flex;
+            gap: 30px;
+            padding: 0 30px;
+            border-bottom: 1px solid #dadce0;
+            background: #f8f9fa;
+            margin-top: 0;
+        }
+
+        .results-tab {
+            padding: 15px 0;
+            text-decoration: none;
+            color: #70757a;
+            font-size: 13px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .results-tab.active {
+            color: #1a73e8;
+            border-bottom-color: #1a73e8;
+        }
+
+        .results-tab:hover {
+            color: #202124;
+        }
+
+        .results-content {
+            display: none;
+            padding: 20px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .results-content.active {
+            display: block;
+        }
+
+        .result-item {
+            margin-bottom: 35px;
+        }
+
+        .result-url {
+            color: #006621;
+            font-size: 13px;
+        }
+
+        .result-title {
+            color: #1a0dff;
+            font-size: 20px;
+            font-weight: 400;
+            margin: 5px 0;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .result-title:hover {
+            text-decoration: underline;
+        }
+
+        .result-description {
+            color: #545454;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 30px;
+        }
+
+        .image-item {
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-title {
+            padding: 10px;
+            background: #f5f5f5;
+            font-size: 13px;
+            color: #202124;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 30px;
+        }
+
+        .page-btn {
+            padding: 10px 15px;
+            background: white;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #4285f4;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .page-btn:hover {
+            border-color: #4285f4;
+            box-shadow: 0 2px 5px rgba(66, 133, 244, 0.2);
+        }
+
+        .page-btn.active {
+            background: #4285f4;
+            color: white;
+            border-color: #4285f4;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: #70757a;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 10px 15px;
+            }
+
+            .main-home {
+                height: auto;
+                padding-top: 40px;
+                padding-bottom: 120px;
+            }
+
+            .google-logo {
+                font-size: 60px;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px 15px;
+            }
+
+            .footer-left, .footer-right {
+                flex-wrap: wrap;
+            }
+
+            .results-header {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .results-search-box {
+                min-width: 100%;
+                order: 3;
+            }
+
+            .results-tab-bar {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header" id="header">
+        <div class="header-logo" onclick="goHome()">Google</div>
+        <div class="header-nav">
+            <div class="header-nav-item" onclick="showTab('search')" id="nav-search">Search</div>
+            <div class="header-nav-item" onclick="showTab('images')" id="nav-images">Images</div>
+            <div class="header-nav-item" onclick="showTab('news')" id="nav-news">News</div>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div class="main-home" id="homePage">
+        <div class="google-logo">
+            <span class="logo-g">G</span><span class="logo-o">o</span><span class="logo-o2">o</span><span class="logo-g2">g</span><span class="logo-l">l</span><span class="logo-e">e</span>
+        </div>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="homeSearchInput" 
+                    placeholder="Search Google or type a URL" 
+                    autocomplete="off"
+                    onkeypress="handleSearch(event)"
+                    oninput="showSuggestions()"
+                >
+                <i class="fas fa-times clear-search" onclick="clearSearch()"></i>
+                <div class="suggestions" id="suggestions"></div>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" onclick="searchQuery()">Google Search</button>
+                <button class="btn" onclick="luckySearch()">I'm Feeling Lucky</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Page -->
+    <div class="results-container" id="resultsContainer">
+        <div class="results-header">
+            <div class="results-logo" onclick="goHome()">Google</div>
+            <div class="results-search-box">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        id="resultsSearchInput" 
+                        placeholder="Search Google" 
+                        onkeypress="handleSearch(event)"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="results-tab-bar">
+            <div class="results-tab active" onclick="showTab('search')"><i class="fas fa-search"></i> All</div>
+            <div class="results-tab" onclick="showTab('images')"><i class="fas fa-images"></i> Images</div>
+            <div class="results-tab" onclick="showTab('news')"><i class="fas fa-newspaper"></i> News</div>
+        </div>
+
+        <!-- Search Results Tab -->
+        <div id="search-tab" class="results-content active">
+            <div id="searchResults"></div>
+            <div class="pagination" id="pagination"></div>
+        </div>
+
+        <!-- Images Results Tab -->
+        <div id="images-tab" class="results-content">
+            <div class="image-grid" id="imageResults"></div>
+        </div>
+
+        <!-- News Results Tab -->
+        <div id="news-tab" class="results-content">
+            <div id="newsResults"></div>
+        </div>
+    </div>
+
+    <div class="footer" id="footer">
+        <div class="footer-left">
+            <a href="#">About</a>
+            <a href="#">Advertising</a>
+            <a href="#">Business</a>
+            <a href="#">How Search works</a>
+        </div>
+        <div class="footer-right">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Settings</a>
+        </div>
+    </div>
+
+    <script>
+        // Mock Data
+        const mockSearchData = {
+            'javascript': [
+                {
+                    title: 'JavaScript - Wikipedia',
+                    url: 'en.wikipedia.org › wiki › JavaScript',
+                    description: 'JavaScript is a programming language commonly used in web browsers that conforms to the ECMAScript standard.'
+                },
+                {
+                    title: 'JavaScript.com',
+                    url: 'javascript.com',
+                    description: 'The home for JavaScript on the web. This website serves as a central repository for JavaScript documentation and tutorials.'
+                },
+                {
+                    title: 'Learn JavaScript - Codecademy',
+                    url: 'codecademy.com › learn › javascript',
+                    description: 'Learn JavaScript with interactive lessons. Master programming fundamentals with our JavaScript courses.'
+                },
+                {
+                    title: 'JavaScript Tutorial - W3Schools',
+                    url: 'w3schools.com › js',
+                    description: 'Well organized and easy to understand Web building tutorials with lots of examples of how to use HTML, CSS, JavaScript.'
+                },
+                {
+                    title: 'MDN Web Docs - JavaScript',
+                    url: 'developer.mozilla.org › en-US › docs › Web › JavaScript',
+                    description: 'JavaScript is a lightweight and interpreted programming language created to enhance the interactivity of web pages.'
+                }
+            ],
+            'web development': [
+                {
+                    title: 'Web Development - Wikipedia',
+                    url: 'en.wikipedia.org › wiki › Web_development',
+                    description: 'Web development is the work involved in developing websites for the Internet or an intranet.'
+                },
+                {
+                    title: 'Web Development Tutorial - MDN',
+                    url: 'developer.mozilla.org › en-US › docs › Learn',
+                    description: 'Learn the foundations of web development. Getting started with the Web is simple: read this series of articles.'
+                }
+            ],
+            'html css': [
+                {
+                    title: 'HTML and CSS Tutorial - W3Schools',
+                    url: 'w3schools.com › html › default.asp',
+                    description: 'HTML and CSS are the essential languages for building web pages. Learn from the basics to advanced concepts.'
+                },
+                {
+                    title: 'MDN Web Docs - HTML',
+                    url: 'developer.mozilla.org › en-US › docs › Web › HTML',
+                    description: 'HyperText Markup Language (HTML) is the standard markup language for creating web pages.'
+                }
+            ],
+            'python': [
+                {
+                    title: 'Python.org',
+                    url: 'python.org',
+                    description: 'Python is an interpreted, high-level programming language with dynamic semantics.'
+                },
+                {
+                    title: 'Python Tutorial - W3Schools',
+                    url: 'w3schools.com › python',
+                    description: 'Well organized and easy to understand web tutorials with lots of examples of how to use python.'
+                }
+            ]
+        };
+
+        const mockImages = {
+            'javascript': ['JS Logo', 'JavaScript Code', 'JavaScript Tutorial', 'Node.js', 'React.js', 'Vue.js'],
+            'web development': ['Web Design', 'Coding', 'Web Development Studio', 'Programming', 'Frontend', 'Backend'],
+            'html css': ['HTML Logo', 'CSS Styling', 'Web Layout', 'Responsive Design', 'Web Code', 'CSS Grid'],
+            'python': ['Python Logo', 'Python Code', 'Python Programming', 'Data Science', 'Jupyter Notebook', 'Python Tutorial']
+        };
+
+        const mockNews = {
+            'javascript': [
+                { title: 'New JavaScript Features Released', date: '2 days ago', source: 'Dev News' },
+                { title: 'JavaScript Performance Tips', date: '5 days ago', source: 'Tech Blog' }
+            ],
+            'web development': [
+                { title: 'Web Development Trends 2025', date: '1 day ago', source: 'Web Weekly' },
+                { title: 'Latest Web Technologies', date: '3 days ago', source: 'Code Magazine' }
+            ]
+        };
+
+        const suggestions = ['javascript basics', 'javascript tutorial', 'javascript array methods', 'javascript objects', 'javascript es6'];
+        let currentPage = 1;
+        let currentQuery = '';
+        let currentTab = 'search';
+
+        function toggleHeader() {
+            const header = document.getElementById('header');
+            const homePage = document.getElementById('homePage');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const footer = document.getElementById('footer');
+
+            if (homePage.style.display === 'none') {
+                header.style.display = 'flex';
+                footer.style.display = 'flex';
+            } else {
+                header.style.display = 'none';
+                footer.style.display = 'none';
+            }
+        }
+
+        function goHome() {
+            document.getElementById('homePage').style.display = 'flex';
+            document.getElementById('resultsContainer').classList.remove('active');
+            document.getElementById('header').style.display = 'none';
+            document.getElementById('footer').style.display = 'none';
+            currentPage = 1;
+            currentTab = 'search';
+        }
+
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                searchQuery();
+            }
+        }
+
+        function searchQuery() {
+            const query = document.getElementById('homeSearchInput').value || document.getElementById('resultsSearchInput').value;
+            if (query.trim()) {
+                currentQuery = query.toLowerCase();
+                currentPage = 1;
+                showResults();
+            }
+        }
+
+        function luckySearch() {
+            searchQuery();
+            // Simulate "I'm Feeling Lucky" by going to first result
+        }
+
+        function clearSearch() {
+            document.getElementById('homeSearchInput').value = '';
+            document.getElementById('suggestions').classList.remove('active');
+        }
+
+        function showSuggestions() {
+            const input = document.getElementById('homeSearchInput').value;
+            const suggestionsDiv = document.getElementById('suggestions');
+
+            if (input.length > 0) {
+                const filtered = suggestions.filter(s => s.includes(input.toLowerCase()));
+                suggestionsDiv.innerHTML = filtered.map(s => 
+                    `<div class="suggestion-item" onclick="selectSuggestion('${s}')"><i class="fas fa-search"></i> ${s}</div>`
+                ).join('');
+                suggestionsDiv.classList.add('active');
+            } else {
+                suggestionsDiv.classList.remove('active');
+            }
+        }
+
+        function selectSuggestion(suggestion) {
+            document.getElementById('homeSearchInput').value = suggestion;
+            document.getElementById('suggestions').classList.remove('active');
+            searchQuery();
+        }
+
+        function showResults() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('resultsContainer').classList.add('active');
+            document.getElementById('header').style.display = 'flex';
+            document.getElementById('footer').style.display = 'flex';
+            document.getElementById('resultsSearchInput').value = currentQuery;
+            
+            showTab('search');
+        }
+
+        function showTab(tab) {
+            currentTab = tab;
+            
+            // Update tab buttons
+            document.querySelectorAll('.results-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.results-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('[onclick*="showTab"]')[0].parentElement.classList.add('active');
+            
+            event.target.parentElement?.classList.add('active') || event.target.classList.add('active');
+
+            if (tab === 'search') {
+                displaySearchResults();
+            } else if (tab === 'images') {
+                displayImageResults();
+            } else if (tab === 'news') {
+                displayNewsResults();
+            }
+        }
+
+        function displaySearchResults() {
+            const results = mockSearchData[currentQuery] || [];
+            const searchResultsDiv = document.getElementById('searchResults');
+            const paginationDiv = document.getElementById('pagination');
+
+            if (results.length === 0) {
+                searchResultsDiv.innerHTML = '<div class="no-results"><h2>No results found for "' + currentQuery + '"</h2><p>Try different keywords or check your spelling.</p></div>';
+                paginationDiv.innerHTML = '';
+                return;
+            }
+
+            const resultsPerPage = 10;
+            const startIndex = (currentPage - 1) * resultsPerPage;
+            const paginatedResults = results.slice(startIndex, startIndex + resultsPerPage);
+
+            searchResultsDiv.innerHTML = paginatedResults.map(result => `
+                <div class="result-item">
+                    <div class="result-url">${result.url}</div>
+                    <div class="result-title">${result.title}</div>
+                    <div class="result-description">${result.description}</div>
+                </div>
+            `).join('');
+
+            // Pagination
+            const totalPages = Math.ceil(results.length / resultsPerPage);
+            let paginationHTML = '';
+            for (let i = 1; i <= Math.min(totalPages, 5); i++) {
+                paginationHTML += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+            }
+            if (totalPages > 5) {
+                paginationHTML += `<button class="page-btn" onclick="goToPage(6)">Next</button>`;
+            }
+            paginationDiv.innerHTML = paginationHTML;
+
+            document.getElementById('search-tab').classList.add('active');
+            document.getElementById('images-tab').classList.remove('active');
+            document.getElementById('news-tab').classList.remove('active');
+        }
+
+        function displayImageResults() {
+            const images = mockImages[currentQuery] || [];
+            const imageResultsDiv = document.getElementById('imageResults');
+
+            if (images.length === 0) {
+                imageResultsDiv.innerHTML = '<div class="no-results"><h2>No images found for "' + currentQuery + '"</h2></div>';
+                return;
+            }
+
+            imageResultsDiv.innerHTML = images.map((img, index) => `
+                <div class="image-item" onclick="alert('Viewing image: ${img}')">
+                    <img src="https://via.placeholder.com/300x200?text=${encodeURIComponent(img)}" alt="${img}">
+                    <div class="image-title">${img}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('search-tab').classList.remove('active');
+            document.getElementById('images-tab').classList.add('active');
+            document.getElementById('news-tab').classList.remove('active');
+        }
+
+        function displayNewsResults() {
+            const news = mockNews[currentQuery] || [];
+            const newsResultsDiv = document.getElementById('newsResults');
+
+            if (news.length === 0) {
+                newsResultsDiv.innerHTML = '<div class="no-results"><h2>No news found for "' + currentQuery + '"</h2></div>';
+                return;
+            }
+
+            newsResultsDiv.innerHTML = news.map(article => `
+                <div class="result-item">
+                    <div class="result-title">${article.title}</div>
+                    <div class="result-url">${article.source} · ${article.date}</div>
+                    <div class="result-description">Latest news and updates about your search topic.</div>
+                </div>
+            `).join('');
+
+            document.getElementById('search-tab').classList.remove('active');
+            document.getElementById('images-tab').classList.remove('active');
+            document.getElementById('news-tab').classList.add('active');
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            displaySearchResults();
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hide header and footer on home page
+            document.getElementById('header').style.display = 'none';
+            document.getElementById('footer').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            font-size: 20vh;
+  width: 80%;      
+  max-width: 600px;  
+  margin: 0 auto;   
+  background: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+body {
+  background-color: #ffffff; 
+}
+@media (max-width: 786px) {
+  body {
+    background-color: #f0f0f0;
+  }
+.responsive-heading {
+  font-size: clamp(24px, 6vw, 72px);
+}
+}
+    </style>
+</head>
+<body>
+    <div class="box">
+        box
+    </div>
+    <h1 class="responsive-heading">Responsive Heading</h1>
+</body>
+</html>

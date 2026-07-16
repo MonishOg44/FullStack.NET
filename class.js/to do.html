@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <head>
+    <style>
+  input {
+      padding:5px;
+    }
+
+    button {
+      background-color: hsla(240,100%,50%,0.2);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    
+    .delete-btn {
+      background-color: #050505;
+      color: white;
+      padding: 3px 8px;
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .delete-btn:hover {
+      background-color: #a45ca3;
+    }    
+    
+    ul {
+      font-size: 25px;  
+    }
+    </style>
+</head>
+<body>
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button onclick="addTaskBtn()">Add Task</button>
+    <ul id="taskList"></ul>
+    <script>
+
+
+        let element = document.getElementById('taskInput');
+
+        function addTaskBtn() {
+            const taskInput = document.getElementById('taskInput');
+            const taskList = document.getElementById('taskList');
+            const taskText = taskInput.value.trim();
+
+            if (taskText) {
+                const listItem = document.createElement('li');
+                listItem.textContent = taskText;
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.onclick = () => {
+                    listItem.remove();
+                };
+                
+                listItem.appendChild(deleteBtn);
+                taskList.appendChild(listItem);
+                taskInput.value = '';
+            } else {
+                alert("Please enter a task.");
+            }
+        }
+        
+
+         function addTask() {
+      let element = document.getElementById('txtTask');
+      let task = element.value.trim();
+      if(task !== "") {
+        let li = document.createElement("li"); 
+        
+        let btn = document.createElement("button");
+        btn.innerText = "x"; 
+        btn.style.background = "hsla(0,100%,50%,0.9)";
+        btn.style.marginLeft = "20px";
+        
+        btn.addEventListener('click', function() {
+          li.remove();
+        });
+        
+        li.textContent = task;
+        li.appendChild(btn);
+        document.querySelector("ul").appendChild(li);
+      }      
+      element.value = "";
+    }  
+
+    </script>
+</body>
+</html>

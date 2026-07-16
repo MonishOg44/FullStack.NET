@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Store - Shop Mac, iPhone, iPad, Watch & More</title>
+  <meta name="description" content="Explore the latest Apple products including MacBook Pro, iPhone 16 Pro, iPad, Apple Watch, and AirPods.">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --background: #ffffff;
+      --foreground: #000000;
+      --muted: #f5f5f5;
+      --muted-foreground: #737373;
+      --border: #e5e5e5;
+      --hero-bg: #000000;
+      --hero-foreground: #ffffff;
+      --hero-muted: #b3b3b3;
+      --link-blue: #0071e3;
+      --section-light-bg: #fafafa;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    /* Typography */
+    .text-hero {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      line-height: 1.05;
+      font-weight: 600;
+    }
+    .text-headline {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      font-weight: 600;
+    }
+    .text-subhead {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      line-height: 1.3;
+      font-weight: 400;
+    }
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      backdrop-filter: saturate(180%) blur(20px);
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .nav-container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 44px;
+    }
+    .nav-logo {
+      color: var(--hero-foreground);
+    }
+    .nav-logo svg {
+      width: 20px;
+      height: 20px;
+    }
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--hero-foreground);
+    }
+    .nav-mobile-btn {
+      display: block;
+      background: none;
+      border: none;
+      color: var(--hero-foreground);
+      padding: 8px;
+      cursor: pointer;
+    }
+    @media (min-width: 1024px) {
+      .nav-links {
+        display: flex;
+      }
+      .nav-mobile-btn {
+        display: none;
+      }
+    }
+    /* Link Styles */
+    .link-apple {
+      color: var(--link-blue);
+      transition: opacity 0.2s;
+    }
+    .link-apple:hover {
+      opacity: 0.8;
+    }
+    /* Sections */
+    .section-dark {
+      background-color: var(--hero-bg);
+      color: var(--hero-foreground);
+    }
+    .section-light {
+      background-color: var(--section-light-bg);
+      color: var(--foreground);
+    }
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+    .hero-small {
+      min-height: 580px;
+    }
+    .hero-content {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 80px 24px 48px;
+      text-align: center;
+    }
+    .hero-subtitle {
+      margin-bottom: 8px;
+    }
+    .hero-description {
+      margin-top: 16px;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .hero-ctas a {
+      font-size: 1.25rem;
+    }
+    .hero-image {
+      margin-top: 32px;
+    }
+    .hero-image img {
+      max-width: 896px;
+      margin: 0 auto;
+      display: block;
+    }
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      gap: 12px;
+      padding: 12px;
+    }
+    @media (min-width: 768px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    /* Product Card */
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card-content {
+      padding: 48px 24px 0;
+      text-align: center;
+    }
+    .product-card-subtitle {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .product-card-description {
+      font-size: 18px;
+      margin-top: 8px;
+    }
+    .product-card-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 16px;
+    }
+    .product-card-image {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      margin-top: 24px;
+      padding: 0 24px;
+      overflow: hidden;
+    }
+    .product-card-image img {
+      max-width: 400px;
+      object-fit: contain;
+    }
+    /* Promo Section */
+    .promo-section {
+      padding: 96px 24px;
+      text-align: center;
+    }
+    .promo-container {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    .promo-description {
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+    .promo-link {
+      font-size: 1.25rem;
+    }
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      gap: 12px;
+      padding: 12px;
+    }
+    @media (min-width: 768px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .service-card {
+      min-height: 400px;
+      padding: 48px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .service-icon-music {
+      background: linear-gradient(135deg, #ef4444, #ec4899);
+    }
+    .service-icon-card {
+      background: #ffffff;
+    }
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .service-description {
+      font-size: 18px;
+      margin-top: 8px;
+    }
+    .service-link {
+      margin-top: 16px;
+    }
+    /* Footer */
+    .footer {
+      background-color: var(--muted);
+      padding: 24px 0;
+    }
+    .footer-container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .footer-promo {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 768px) {
+      .footer-links-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+    .footer-column h3 {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .footer-column ul {
+      list-style: none;
+    }
+    .footer-column li {
+      margin-bottom: 8px;
+    }
+    .footer-column a {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      transition: color 0.2s;
+    }
+    .footer-column a:hover {
+      color: var(--foreground);
+    }
+    .footer-bottom {
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+    .footer-copyright {
+      font-size: 12px;
+      color: var(--muted-foreground);
+    }
+    .footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+    }
+    .footer-legal a {
+      color: var(--muted-foreground);
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover {
+      color: var(--foreground);
+    }
+    .footer-legal span {
+      color: var(--muted-foreground);
+    }
+    /* Utility Classes */
+    .text-muted {
+      color: var(--muted-foreground);
+    }
+    .text-hero-muted {
+      color: var(--hero-muted);
+    }
+    .text-white {
+      color: var(--hero-foreground);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="nav-inner">
+        <!-- Logo -->
+        <a href="#" class="nav-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+          </svg>
+        </a>
+        <!-- Desktop Navigation -->
+        <div class="nav-links">
+          <a href="#">Store</a>
+          <a href="#">Mac</a>
+          <a href="#">iPad</a>
+          <a href="#">iPhone</a>
+          <a href="#">Watch</a>
+          <a href="#">Vision</a>
+          <a href="#">AirPods</a>
+          <a href="#">TV & Home</a>
+          <a href="#">Entertainment</a>
+          <a href="#">Accessories</a>
+          <a href="#">Support</a>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button class="nav-mobile-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- Main Hero Section -->
+  <section class="hero section-dark">
+    <div class="hero-content">
+      <p class="text-subhead hero-subtitle text-hero-muted">New</p>
+      <h1 class="text-hero">MacBook Pro</h1>
+      <p class="text-subhead hero-description text-hero-muted">Mind-blowing. Head-turning.</p>
+      <div class="hero-ctas">
+        <a href="#" class="link-apple">Learn more &gt;</a>
+        <a href="#" class="link-apple">Buy &gt;</a>
+      </div>
+    </div>
+  </section>
+  <!-- Secondary Hero -->
+  <section class="hero hero-small section-light">
+    <div class="hero-content">
+      <h2 class="text-hero">iPhone 16 Pro</h2>
+      <p class="text-subhead hero-description text-muted">Built for Apple Intelligence.</p>
+      <div class="hero-ctas">
+        <a href="#" class="link-apple">Learn more &gt;</a>
+        <a href="#" class="link-apple">Buy &gt;</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&q=80" alt="iPhone 16 Pro">
+      </div>
+    </div>
+  </section>
+  <!-- Product Grid -->
+  <div class="product-grid">
+    <!-- iPad Pro -->
+    <div class="product-card section-light">
+      <div class="product-card-content">
+        <p class="product-card-subtitle text-muted">New</p>
+        <h2 class="text-headline">iPad Pro</h2>
+        <p class="product-card-description text-muted">Unbelievably thin. Incredibly powerful.</p>
+        <div class="product-card-ctas">
+          <a href="#" class="link-apple">Learn more &gt;</a>
+          <a href="#" class="link-apple">Buy &gt;</a>
+        </div>
+      </div>
+    </div>
+    <!-- iPad Air -->
+    <div class="product-card section-light">
+      <div class="product-card-content">
+        <p class="product-card-subtitle text-muted">New</p>
+        <h2 class="text-headline">iPad Air</h2>
+        <p class="product-card-description text-muted">Two Icons. Icons everywhere.</p>
+        <div class="product-card-ctas">
+          <a href="#" class="link-apple">Learn more &gt;</a>
+          <a href="#" class="link-apple">Buy &gt;</a>
+        </div>
+      </div>
+    </div>
+    <!-- Apple Watch -->
+    <div class="product-card section-dark">
+      <div class="product-card-content">
+        <p class="product-card-subtitle text-hero-muted">Series 10</p>
+        <h2 class="text-headline text-white">Apple Watch</h2>
+        <p class="product-card-description text-hero-muted">Thinstant classic.</p>
+        <div class="product-card-ctas">
+          <a href="#" class="link-apple">Learn more &gt;</a>
+          <a href="#" class="link-apple">Buy &gt;</a>
+        </div>
+      </div>
+      <div class="product-card-image">
+        <img src="https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=600&q=80" alt="Apple Watch">
+      </div>
+    </div>
+    <!-- AirPods Pro -->
+    <div class="product-card section-dark">
+      <div class="product-card-content">
+        <p class="product-card-subtitle text-hero-muted">2nd generation</p>
+        <h2 class="text-headline text-white">AirPods Pro</h2>
+        <p class="product-card-description text-hero-muted">Hearing aid. Reimagined.</p>
+        <div class="product-card-ctas">
+          <a href="#" class="link-apple">Learn more &gt;</a>
+          <a href="#" class="link-apple">Buy &gt;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Trade In Promo -->
+  <section class="promo-section section-dark">
+    <div class="promo-container">
+      <h2 class="text-headline text-white">Trade In</h2>
+      <p class="text-subhead promo-description text-hero-muted">
+        Get $200–$650 in credit toward iPhone 16 Pro when you trade in iPhone 12 or higher.
+      </p>
+      <a href="#" class="link-apple promo-link">See what your device is worth &gt;</a>
+    </div>
+  </section>
+  <!-- Services Grid -->
+  <div class="services-grid">
+    <!-- Apple Music -->
+    <div class="service-card section-light">
+      <div class="service-icon service-icon-music">
+        <svg viewBox="0 0 24 24" fill="white">
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+      </div>
+      <h3 class="text-headline">Apple Music</h3>
+      <p class="service-description text-muted">Get 3 months of Apple Music free.</p>
+      <a href="#" class="link-apple service-link">Try it free &gt;</a>
+    </div>
+    <!-- Apple Card -->
+    <div class="service-card section-dark">
+      <div class="service-icon service-icon-card">
+        <svg viewBox="0 0 24 24" fill="black" width="32" height="32">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h8v2H6zm10 0h2v2h-2zm-6-4h8v2h-8z"/>
+        </svg>
+      </div>
+      <h3 class="text-headline text-white">Apple Card</h3>
+      <p class="service-description text-hero-muted">Get up to 3% Daily Cash back with every purchase.</p>
+      <a href="#" class="link-apple service-link">Learn more &gt;</a>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Promo Text -->
+      <p class="footer-promo">
+        1. Trade-in values will vary based on the condition, year, and configuration of your eligible trade-in device. Not all devices are eligible for credit. You must be at least 18 years old to be eligible to trade in for credit or for an Apple Gift Card. Trade-in value may be applied toward qualifying new device purchase, or added to an Apple Gift Card.
+      </p>
+      <!-- Links Grid -->
+      <div class="footer-links-grid">
+        <div class="footer-column">
+          <h3>Shop and Learn</h3>
+          <ul>
+            <li><a href="#">Store</a></li>
+            <li><a href="#">Mac</a></li>
+            <li><a href="#">iPad</a></li>
+            <li><a href="#">iPhone</a></li>
+            <li><a href="#">Watch</a></li>
+            <li><a href="#">Vision</a></li>
+            <li><a href="#">AirPods</a></li>
+            <li><a href="#">TV & Home</a></li>
+            <li><a href="#">AirTag</a></li>
+            <li><a href="#">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Apple Wallet</h3>
+          <ul>
+            <li><a href="#">Wallet</a></li>
+            <li><a href="#">Apple Card</a></li>
+            <li><a href="#">Apple Pay</a></li>
+            <li><a href="#">Apple Cash</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Account</h3>
+          <ul>
+            <li><a href="#">Manage Your Apple ID</a></li>
+            <li><a href="#">Apple Store Account</a></li>
+            <li><a href="#">iCloud.com</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Entertainment</h3>
+          <ul>
+            <li><a href="#">Apple One</a></li>
+            <li><a href="#">Apple TV+</a></li>
+            <li><a href="#">Apple Music</a></li>
+            <li><a href="#">Apple Arcade</a></li>
+            <li><a href="#">Apple Podcasts</a></li>
+            <li><a href="#">Apple Books</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Apple Store</h3>
+          <ul>
+            <li><a href="#">Find a Store</a></li>
+            <li><a href="#">Genius Bar</a></li>
+            <li><a href="#">Today at Apple</a></li>
+            <li><a href="#">Group Reservations</a></li>
+            <li><a href="#">Apple Camp</a></li>
+            <li><a href="#">Apple Trade In</a></li>
+            <li><a href="#">Ways to Buy</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">Copyright © 2025 Apple Inc. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <span>|</span>
+          <a href="#">Terms of Use</a>
+          <span>|</span>
+          <a href="#">Sales and Refunds</a>
+          <span>|</span>
+          <a href="#">Site Map</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

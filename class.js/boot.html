@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body class="p-3">
+
+<!-- Task 1:for larger screens like studio xdr mac display -->
+<div class="d-none d-lg-block bg-light p-3 mb-3">
+  <h4>Large Screen Section</h4>
+  <p> large screens.</p>
+</div>
+
+<!-- Task 2:  -->
+<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#welcomeModal">
+   Welcome
+</button>
+
+<div class="modal fade" id="welcomeModal">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <h5>Welcome!</h5>
+      <p>good evening.</p>
+      <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Task 3:  -->
+<div class="mt-4">
+  <h5>Features</h5>
+  <div class="d-flex align-items-center mb-2">
+    <i class="bi bi-check-circle text-success me-2"></i> 
+  </div>
+  <div class="d-flex align-items-center mb-2">
+    <i class="bi bi-check-circle text-success me-2"></i> Responsive 
+  </div>
+  <div class="d-flex align-items-center">
+    <i class="bi bi-check-circle text-success me-2"></i> 
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

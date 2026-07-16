@@ -1,0 +1,27 @@
+  p {
+            font-size: 20px;
+            color: blue;
+        }
+        #div {
+            width: 400px;
+            height: 200px;
+            border: 2px solid #000;
+            margin-top: 20px;
+            background-color: aquamarine;
+
+        }
+        #about {
+            width: 400px;
+            height: 200px;
+            border: 2px solid #ea0707;
+            margin-top: 20px;
+            background-color: coral;
+        }
+        .third-paragraph {
+            font-size: 25px;
+            color: red;
+        }
+        .fourth-paragraph {
+            font-size: 30px;
+            color: green;
+        }

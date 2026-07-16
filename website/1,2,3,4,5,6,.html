@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Practice Webpage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    header, footer {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    header img {
+      height: 40px;
+      vertical-align: middle;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .content {
+      padding: 20px;
+    }
+    .highlight {
+      background-color: yellow;
+    }
+    form {
+      margin-top: 20px;
+    }
+    form input {
+      margin: 5px 0;
+      display: block;
+    }
+    img{
+      gap: 20px;
+      padding-right: 20px;
+      display: flex;
+    }
+    
+    p{
+      display: flex;
+      padding: 20px;
+    }
+
+    #top{
+      display:flex;
+      padding: 20px;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="images.png" alt="Site Logo">
+    <p>My Practice Webpage</p>
+    <nav>
+      <a href="about.html">Internal Link</a>
+      <a href="https://www.example.com">External Link</a>
+    </nav>
+  </header>
+
+  <div class="content" id="top">
+    <h2>Block vs Inline Elements</h2>
+    <p>This is a paragraph (block element). It starts on a new line.</p>
+    <br>
+    <p>Another<span class="highlight">inline span <br></span> inside text  
+    <a href="https://openai.com">inline link</a>.</p>
+  </div>
+
+  <div class="content">
+    <h2>Mini Form</h2>
+    <form>
+      <label>Text: <input type="text" name="username"></label>
+      <label>Password: <input type="password" name="password"></label>
+      <label>Email: <input type="email" name="email"></label>
+      <label><input type="checkbox" name="subscribe"> Subscribe to newsletter</label>
+      <label><input type="radio" name="gender" value="male"> Male</label>
+      <label><input type="radio" name="gender" value="female"> Female</label>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 My Practice Webpage | Contact: monish@example.com</p>
+    <a href="#top" style="color: lightblue;">Back to Top</a>
+    <a href="#top">Back to Top</a>
+  </footer>
+
+</body>
+</html>

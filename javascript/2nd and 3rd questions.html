@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            margin:0;
+            padding:0;
+        }
+        header{
+            background-color: hsla(240, 100%, 25%, 1);
+            color: white;
+            padding:20px;
+        }
+        nav,ul{
+            display: flex;
+            list-style-type: none;
+            gap: 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: larger;
+        }
+        nav{
+            background-color: red;
+            padding: 10px 20px;
+        }
+        main{
+            background: hsla(240, 100%, 50%, 0.2);
+            display: flex;
+            align-items: end;
+        }
+        footer{
+            background-color: violet;
+            padding: 10px;
+       }
+        nav ul li {
+            padding: 10px;
+            }
+
+       .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .gallery img {
+      width: 200px;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      border-color: #666;
+    }
+    </style>
+</head>
+<body>
+    
+  <h2>Image Gallery</h2>
+  <div class="gallery">
+    <a href="images/photo1.jpg" target="_blank">
+      <img src="images/photo1.jpg" alt="Beautiful sunset over the ocean">
+    </a>
+    <a href="images/photo2.jpg" target="_blank">
+      <img src="images/photo2.jpg" alt="Mountain landscape with snow peaks">
+    </a>
+    <a href="images/photo3.jpg" target="_blank">
+      <img src="images/photo3.jpg" alt="City skyline at night with lights">
+    </a>
+    <a href="images/photo4.jpg" target="_blank">
+      <img src="images/photo4.jpg" alt="Forest trail surrounded by tall trees">
+    </a>
+  </div>
+
+    <header>
+        <h1>THE TIMES OF INDIA</h1>
+        <p>India's most trusted news source</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#frontpage">frontpage</a></li>
+            <li><a href="#">state news</a></li>
+            <li><a href="#">technology</a></li>
+            <li><a href="#">sports</a></li>
+        </ul>
+    </nav>
+    <main id ="frontpage">
+        <section>
+            <h1>breaking news</h1>
+            partyX has won the elections held in the state of y. The results were announced on date z. The victory marks a significant shift in the political landscape of the region2026.
+    <article>
+            <h2>Election Results 2026</h2>
+            <p>In a surprising turn of events, partyX has secured a majority in the state assembly elections held on date z. The election saw a high voter turnout, reflecting the citizens' eagerness for change.</p>
+    </article>
+    <article>
+        <h2>Sports Update</h2>
+        <p>India won the 2026 World Cup.</p>
+    </article>
+        </section>
+        <aside>
+            <h4>on this day in 1996</h4>
+            <p><h6>srilanka won the odi WC</h6></p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non doloribus omnis ea labore! Nemo quae corporis ducimus, quod sequi voluptas nostrum. Iusto minima quaerat quam quod quo vel vitae doloremque.</p>
+        </aside>
+    </main>
+    <footer>
+        <p>&copy; 2026 The Times of India. All rights reserved.</p>
+    </footer>
+</body>
+</html>

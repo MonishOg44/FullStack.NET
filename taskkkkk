@@ -1,0 +1,189 @@
+----masterpage.master------
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="WebApplication1.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Master Page Example</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        .header {
+            background: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .menu {
+            background: #333;
+            padding: 10px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .footer {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+</head>
+
+<body>
+
+<form id="form1" runat="server">
+
+<div class="header">
+    <h2>Student Management System</h2>
+</div>
+
+<div class="menu">
+    <a href="Home.aspx">Home</a>
+    <a href="About.aspx">About</a>
+    <a href="Contact.aspx">Contact</a>
+</div>
+
+<div class="content">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+</div>
+
+<div class="footer">
+    Copyright © 2026
+</div>
+
+</form>
+
+</body>
+</html>
+
+----masterpage.mastercs----
+
+using System;
+
+namespace WebApplication1
+{
+    public partial class MasterPage : System.Web.UI.MasterPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+
+---home.aspx----
+
+<%@ Page Title="Home"
+Language="C#"
+MasterPageFile="~/MasterPage.master"
+AutoEventWireup="true"
+CodeBehind="Home.aspx.cs"
+Inherits="WebApplication1.Home" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<h2>Home Page</h2>
+
+<p>Welcome to Student Management System.</p>
+
+</asp:Content
+
+
+---about.aspx---
+
+<%@ Page Title="About"
+Language="C#"
+MasterPageFile="~/MasterPage.master"
+AutoEventWireup="true"
+CodeBehind="About.aspx.cs"
+Inherits="WebApplication1.About" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<h2>About Us</h2>
+
+<p>This application demonstrates Master Pages in ASP.NET Web Forms.</p>
+
+</asp:Content>
+
+---about.aspx.cs
+
+using System;
+
+namespace WebApplication1
+{
+    public partial class About : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+
+---contact.aspx---
+
+<%@ Page Title="Contact"
+Language="C#"
+MasterPageFile="~/MasterPage.master"
+AutoEventWireup="true"
+CodeBehind="Contact.aspx.cs"
+Inherits="WebApplication1.Contact" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<h2>Contact</h2>
+
+<p>Email : admin@gmail.com</p>
+
+<p>Phone : 9876543210</p>
+
+</asp:Content>
+
+
+---contact.aspx.cs
+
+
+using System;
+
+namespace WebApplication1
+{
+    public partial class Contact : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+
+
